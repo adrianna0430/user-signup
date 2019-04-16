@@ -27,14 +27,19 @@ def validate_signup():
     verify_pass_error=''
     email_error=''
     #value=undefined in username, password, and verify password
-    if len(username)<3 or len(username)>20:
+    if len(username)==0:
+        username_error="Username must not be blank."
+    if (len(username)>0 and len(username)<3) or len(username)>20:
         username_error= "Username must be between 3 and 20 characters."
     for i in range(len(username)):
         if username[i] == ' ':
             username_error= "Username cannot contain spaces."
             break
     
-    if  len(password)<3 or len(password)>20:
+    if len(password)==0:
+        password_error="Password cannot be blank."
+        password=''
+    if  (len(password)>0 and len(password)<3) or len(password)>20:
         password_error= "Passwords must be between 3 and 20 characters."
         password=''
     for i in range(len(password)):
